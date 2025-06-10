@@ -1,4 +1,4 @@
-# ACID
+# ACID (dla baz SQL)
 
 ## Cechy transakcji (ACID)
 
@@ -212,6 +212,7 @@ je zgodnie z protokołem Strict-2PL
 wiersze wynikowe instrukcji SELECT
 
 ### Poziom READ COMMITED
+
 - Transakcja T odczytuje tylko te
 obiekty, których zmiany zostały
 zatwierdzone.
@@ -230,7 +231,215 @@ blokada ta jest zwalniana (nie
 czekając na koniec transakcji)
 
 ### Poziom READ UNCOMMITED (poziom najniższy)
+
 - Transakcja może
 odczytywać wiersze, na
 których działają inne
 transakcje
+
+# BASE (dla baz NoSQL)
+
+BASE (dla NoSQL)
+- Podstawowa dostępność (**Basically Available**)
+    - Baza danych sprzyja dostępności danych,
+    a nie poprawności danych
+- Stan miękki (**Soft State**)
+    - Bazy danych (np. Repliki) nie muszą być
+    cały czas spójne
+- Ostateczna spójność (**Eventually Consistent**)
+    - Po pewnym czasie magazyny baz danych
+    będą ostatecznie wzajemnie spójne  
+
+- Bazy danych NoSQL są nastawione na
+skalowalność
+- Gdy repliki ulegną awarii, bazy danych
+NoSQL nadal będą mogły zwracać dane,
+chociaż nie będzie to najdokładniejsza
+wersja
+
+# Porównanie baz danych SQL i NoSQL
+
+<table>
+<tr>
+<th> ACID </th>
+<th> BASE </th>
+</tr>
+<tr>
+<td>
+
+ACID (dla SQL)
+- Atomowość (**Atomic**)
+    - Kiedy dochodzi do transakcji (odczytu / zapisu),
+powinna ona nastąpić od razu lub wcale
+    - Przerwanie transakcji nie powinno mieć
+wpływu na bazę danych
+    - Jeśli transakcja przechodzi, stan bazy danych
+powinien odzwierciedlać zmianę
+- Spójność (**Consistent**)
+    - Po zakończeniu transakcji instancje baz danych
+(np. Repliki) powinny w tym samym czasie
+odzwierciedlać ten sam stan
+- Izolacja (**Isolated**)
+    - Każda transakcja powinna być wykonywana
+oddzielnie.
+    - Baza danych blokuje wiersz, aby zapewnić, że
+transakcje są realizowane sekwencyjnie
+- Trwałość (**Durable**)
+    - Po zatwierdzeniu transakcji modyfikacja będzie
+trwała, nawet w przypadku awarii systemu
+
+- Właściwości ACID zapewniają spójność danych
+po zakończeniu transakcji, ale kosztem
+zablokowania bazy danych
+
+</td>
+<td>
+
+BASE (dla NoSQL)
+- Podstawowa dostępność (**Basically Available**)
+    - Baza danych sprzyja dostępności danych,
+    a nie poprawności danych
+- Stan miękki (**Soft State**)
+    - Bazy danych (np. Repliki) nie muszą być
+    cały czas spójne
+- Ostateczna spójność (**Eventually Consistent**)
+    - Po pewnym czasie magazyny baz danych
+    będą ostatecznie wzajemnie spójne  
+
+- Bazy danych NoSQL są nastawione na
+skalowalność
+- Gdy repliki ulegną awarii, bazy danych
+NoSQL nadal będą mogły zwracać dane,
+chociaż nie będzie to najdokładniejsza
+wersja
+
+</td>
+</tr>
+</table>
+
+## Porównanie baz danych SQL i NoSQL na kategorie
+
+<table>
+<tr>
+<th>
+
+
+
+</th>
+<th>
+
+SQL
+
+</th>
+<th>
+
+NoSQL
+
+</th>
+</tr>
+<tr>
+<td>
+
+Najlepsze dla:
+
+</td>
+<td>
+
+- Obsługi danych, które są relacyjne i mają
+logiczne i dyskretne wymagania, które można
+z góry zidentyfikować
+- Schematów, które muszą być utrzymywane i
+synchronizowane między aplikacją a bazą
+danych
+- Starszych systemów budowanych dla struktur
+relacyjnych
+- Aplikacji wymagające złożonych zapytań lub
+transakcji wielowierszowych
+
+
+</td>
+<td>
+
+- Obsługi dużych, niepowiązanych,
+nieokreślonych lub szybko zmieniających się
+danych
+- Danych niezależnych od schematu lub gdy
+schemat jest narzucony przez aplikację
+- Aplikacji, w których wydajność i dostępność
+są ważniejsze niż silna spójność
+- Zawsze dostępnych aplikacji, które służą
+użytkownikom na całym świecie
+
+</td>
+</tr>
+<tr>
+<td>
+
+Scenariusze:
+
+</td>
+<td>
+
+- Systemy księgowe, finansowe i bankowe
+- Systemy zarządzania zapasami
+- Systemy zarządzania transakcjami
+
+</td>
+<td>
+
+- Aplikacje mobilne
+- Analizy w czasie rzeczywistym
+- Zarządzanie zawartością
+- Personalizacja
+- Aplikacje IoT
+- Migracja bazy danych
+
+</td>
+</tr>
+<tr>
+<td>
+
+Skalowalność:
+
+</td>
+<td>
+
+- Skalowanie danych w pionie, zwiększając
+obciążenie serwera
+
+</td>
+<td>
+
+- Skaluje dane w poziomie z wykorzystaniem
+shardingu między serwerami
+
+</td>
+</tr>
+<tr>
+<td>
+
+Model danych:
+
+</td>
+<td>
+
+- Typ bazy danych: tabele wierszy,
+pogrupowane w relacje
+- Używanie strukturalnego języka zapytań
+(SQL)
+- Przechowywanie danych jako wiersze w
+tabelach; powiązane dane przechowywane
+osobno i łączone w przypadku złożonych
+zapytań
+
+</td>
+<td>
+
+- Typy baz danych: klucz-wartość,
+dokumentowe, kolumnowe, grrafowe
+- Przechowywanie danych w zależności od
+typu bazy danych
+
+</td>
+</tr>
+</table>
