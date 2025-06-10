@@ -1,3 +1,106 @@
+
+# Szybkie podsumowanie
+
+### 1. Wprowadzenie do baz danych
+
+- **Baza danych (BD)**: uporządkowany zbiór danych odwzorowujący rzeczywistość, trwały, spójny, bezpieczny, współdzielony.
+- **System Zarządzania Bazą Danych (SZBD)**: oprogramowanie do tworzenia, modyfikowania i zarządzania bazami danych.
+- **Model danych**: abstrakcja rzeczywistości (domeny, związki, operacje).
+- **Transakcje i ACID**:  
+    - Atomowość – całość albo nic,
+    - Coherence – spójność danych,
+    - Izolacja – brak wzajemnego wpływu,
+    - Durability – trwałość po zatwierdzeniu.
+
+### 2. Modele danych
+
+- Model konceptualny (ERD): encje, atrybuty, związki, kardynalności.
+- Model logiczny: encje = tabele, atrybuty = kolumny, związki = klucze obce.
+- Model fizyczny: sposób zapisu na dysku (indeksy, pliki, rekordy).
+- Typy relacji: 1:1, 1:N, N:M, self-relation.
+- Słaba encja: nie ma własnego identyfikatora – zależy od encji nadrzędnej.
+
+
+### 3. Relacyjny model danych (SQL)
+
+- **Pojęcia**:
+    - Atrybut = kolumna, krotka = wiersz, relacja = tabela.
+    - Klucz główny (PK), obcy (FK), dziedzina.
+- **Zasady tabeli**:
+    - Unikalność, brak powtórzeń, atomowość danych.
+- **Integralność**:
+    - Primary Key, Foreign Key, NOT NULL, UNIQUE, CHECK.
+    - Referencyjna integralność: zachowanie spójności przy aktualizacji/usuwaniu (Restrict, Cascade, Set Null, Set Default).
+- **Schemat relacyjny**: tabele, widoki, procedury, wyzwalacze.
+
+
+
+### 4. Języki baz danych (SQL)
+
+- **DDL** (Data Definition Language): CREATE, ALTER, DROP.
+- **DML** (Data Manipulation Language): SELECT, INSERT, UPDATE, DELETE.
+- **DCL** (Data Control Language): GRANT, REVOKE.
+- Transakcyjność: COMMIT, ROLLBACK, LOCK (S – współdzielony, X – wyłączny).
+
+
+### 5. Transakcyjność i współbieżność
+
+- **Strict 2PL**: transakcje blokują dane do końca (pełna izolacja).
+- **Weak 2PL**: możliwe wcześniejsze zwolnienie blokady odczytu.
+- **Poziomy izolacji** (SQL):
+    - READ UNCOMMITTED: widoczne niezatwierdzone zmiany.
+    - READ COMMITTED: brak brudnych odczytów.
+    - REPEATABLE READ: brak niepowtarzalnych odczytów.
+    - SERIALIZABLE: pełna izolacja (brak fantomów).
+- **Anomalie**: Dirty Read, Lost Update, Nonrepeatable Read, Phantom.
+
+
+### 6. Architektury i typy baz danych
+
+- Architektury:
+    - Jednopoziomowa, klient-serwer, trójwarstwowa, rozproszona.
+- Rodzaje baz danych:
+    - Relacyjne (SQL) – tabele, np. MySQL, PostgreSQL.
+    - Nierelacyjne (NoSQL) – dokumentowe (MongoDB), grafowe, kolumnowe, klucz-wartość.
+    - Obiektowe, obiektowo-relacyjne, XML, hierarchiczne, sieciowe, kartotekowe.
+
+
+### 7. Systemy zarządzania bazami danych (SZBD)
+
+- **Oracle**: potężne, drogie, SQL i NoSQL.
+- **MS SQL** Server: dobra integracja z Windows, wysoki koszt.
+- **MySQL**: darmowy, szeroko wspierany, ale z ograniczeniami.
+- **PostgreSQL**: open-source, relacyjno-obiektowy, wolniejszy w odczycie.
+
+
+### 8. Modelowanie danych (ERD)
+
+- Etapy:
+    1.	Identyfikacja encji i kluczy.
+    2.	Atrybuty (proste/złożone, wyliczane).
+    3.	Związki (1:1, 1:N, N:M, opcjonalność).
+    4.	Normalizacja danych – unikanie redundancji.
+- Diagram ERD: graficzna reprezentacja encji i ich relacji.
+
+
+### 9. NoSQL – bazy nierelacyjne
+
+- **Rodzaje**:
+    - Dokumentowe (MongoDB),
+    - Grafowe (Neo4j),
+    - Kolumnowe (Cassandra),
+    - Klucz-wartość (Redis).
+- **Cechy**: brak schematu, elastyczność, skalowalność.
+- **Zastosowanie**: Big Data, IoT, systemy rozproszone.
+- Brak transakcyjności ACID → zamiast tego CAP i BASE (Eventually Consistent).
+
+
+### 10. Administracja SQL/NoSQL
+
+- **SQL**: tworzenie ról, użytkowników, backup, restore, eksport/import.
+- **NoSQL**: zarządzanie kolekcjami, użytkownikami, indeksami.
+- **Bezpieczeństwo**: autoryzacja, szyfrowanie, backup.
+
 # ACID (dla baz SQL)
 
 ## Cechy transakcji (ACID)
